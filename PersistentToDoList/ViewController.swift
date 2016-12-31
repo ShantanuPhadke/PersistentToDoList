@@ -13,6 +13,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     @IBOutlet weak var myTable: UITableView!
     var tasks = [NSManagedObject]()
+    var importantTasks = [NSManagedObject]()
+    var unimportantTasks = [NSManagedObject]()
+    
+    @IBOutlet weak var segments: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,16 +69,44 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //Sets the number of rows in the UITableView to the number of task objects in the tasks array
     //that we have defined (this makes sure that we don't take up any extra space that is not needed
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return tasks.count
+        
+        switch segments.selectedSegmentIndex{
+            case 0:
+                return tasks.count
+            case 1:
+                return importantTasks.count
+            default:
+                return unimportantTasks.count
+            
+        }
     }
     
     //In this second function we are just setting the content of each row in the UITableView as the
     //name of the task at that index in the tasks array
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = UITableViewCell()
-        let task = tasks[indexPath.row]
+        //let task = tasks[indexPath.row]
         
-        cell.textLabel?.text = task.valueForKey("name") as? String
+        print("Selected Segment Index \(segments.selectedSegmentIndex)")
+        
+        switch segments.selectedSegmentIndex{
+            case 0:
+                var cellText = tasks[indexPath.row].valueForKey("name") as? String
+                if tasks[indexPath.row].valueForKey("isImportant") as! Bool == true{
+                    cellText = cellText! + " (URGENT)"
+                    cell.textLabel?.textColor = UIColor(red: CGFloat(1.0), green: CGFloat(0.0), blue: CGFloat(0.0), alpha: CGFloat(1.0))
+                }else{
+                    cellText = cellText! + " (NORMAL)"
+                    cell.textLabel?.textColor = UIColor(red: CGFloat(0.0), green: CGFloat(0.0), blue: CGFloat(1.0), alpha: CGFloat(1.0))
+                }
+                cell.textLabel?.text = cellText
+            case 1:
+                cell.textLabel?.text = importantTasks[indexPath.row].valueForKey("name") as?String
+            default:
+                cell.textLabel?.text = unimportantTasks[indexPath.row].valueForKey("name") as? String
+            
+        }
+        //cell.textLabel?.text = task.valueForKey("name") as? String
         return cell
     }
     
@@ -93,6 +125,40 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }catch{
             print("Could not properly fetch!")
         }
+        
+        importantTasks = [NSManagedObject]()
+        unimportantTasks = [NSManagedObject]()
+        
+        for task in tasks{
+            if task.valueForKey("isImportant") as! Bool == true{
+                importantTasks.append(task)
+            }else{
+                unimportantTasks.append(task)
+            }
+        }
+        
+        
+        for impTask in importantTasks{
+            print(impTask.valueForKey("name"))
+        }
+        
+        print("")
+        
+        for unimpTask in unimportantTasks{
+            print(unimpTask.valueForKey("name"))
+        }
+        
     }
+    
+    
+    @IBAction func segmentChanged() {
+        print("Selected Segment Index \(segments.selectedSegmentIndex)")
+        
+        myTable.reloadData()
+    }
+    
+    
+    
+    
 }
 

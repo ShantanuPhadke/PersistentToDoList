@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 class AddTaskViewController: UIViewController {
     
 
@@ -16,12 +17,27 @@ class AddTaskViewController: UIViewController {
     
     @IBOutlet weak var important: UISwitch!
     
+    @IBOutlet weak var taskImportance: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func clearText() {
+        newTask.text = ""
+    }
 
+    @IBAction func changeLabel() {
+        if important.on{
+            taskImportance.text = "URGENT"
+        }else{
+            taskImportance.text = "NORMAL"
+        }
+        
+    }
+    
     @IBAction func addTask() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
@@ -31,13 +47,19 @@ class AddTaskViewController: UIViewController {
         let task = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
         
         task.setValue(newTask.text, forKey: "name")
-        task.setValue(important.enabled, forKey: "isImportant")
+        if(important.on){
+            task.setValue(true, forKey: "isImportant")
+        }else{
+            task.setValue(false, forKey: "isImportant")
+        }
         
         do{
             try managedContext.save()
         }catch let error as NSError{
             print("Could not save! + \(error)")
         }
+        
+        newTask.text = "" //Clear the text after button is clicked!
 
     }
     
