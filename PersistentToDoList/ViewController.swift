@@ -93,15 +93,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             case 0:
                 var cellText = tasks[indexPath.row].valueForKey("name") as? String
                 if tasks[indexPath.row].valueForKey("isImportant") as! Bool == true{
-                    cellText = cellText! + " (URGENT)"
+                    //cellText = cellText! + " (URGENT)"
                     cell.textLabel?.textColor = UIColor(red: CGFloat(1.0), green: CGFloat(0.0), blue: CGFloat(0.0), alpha: CGFloat(1.0))
+                    //Putting in the Due Date for the just the important/urgent tasks
+                    let myDate = tasks[indexPath.row].valueForKey("date")!
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "EEEE MMMM dd, yyyy' at 'h:mm a zz."//"yyyy-MM-dd HH:mm:ss Z"
+                    let dateString = dateFormatter.stringFromDate(myDate as! NSDate)
+                    cellText = cellText! + "  \(dateString) (URGENT)"
+                    
                 }else{
                     cellText = cellText! + " (NORMAL)"
                     cell.textLabel?.textColor = UIColor(red: CGFloat(0.0), green: CGFloat(0.0), blue: CGFloat(1.0), alpha: CGFloat(1.0))
                 }
                 cell.textLabel?.text = cellText
+            
             case 1:
                 cell.textLabel?.text = importantTasks[indexPath.row].valueForKey("name") as?String
+                let myDate = tasks[indexPath.row].valueForKey("date")!
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "EEEE MMMM dd, yyyy' at 'h:mm a zz."//"yyyy-MM-dd HH:mm:ss Z"
+                let dateString = dateFormatter.stringFromDate(myDate as! NSDate)
+                cell.textLabel?.text = (cell.textLabel?.text)! + "   \(dateString)"
+
             default:
                 cell.textLabel?.text = unimportantTasks[indexPath.row].valueForKey("name") as? String
             

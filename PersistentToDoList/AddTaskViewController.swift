@@ -19,10 +19,16 @@ class AddTaskViewController: UIViewController {
     
     @IBOutlet weak var taskImportance: UILabel!
     
+    @IBOutlet weak var taskDate: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //Want to set the minimum possible date for the UIDatePicker to the current date
+        let currentDate = NSDate()
+        taskDate.minimumDate = currentDate
+        taskDate.date = currentDate //by default
     }
     
     @IBAction func clearText() {
@@ -49,6 +55,7 @@ class AddTaskViewController: UIViewController {
         task.setValue(newTask.text, forKey: "name")
         if(important.on){
             task.setValue(true, forKey: "isImportant")
+            task.setValue(taskDate.date, forKey: "date")
         }else{
             task.setValue(false, forKey: "isImportant")
         }
@@ -62,6 +69,6 @@ class AddTaskViewController: UIViewController {
         newTask.text = "" //Clear the text after button is clicked!
 
     }
-    
+   
 
 }

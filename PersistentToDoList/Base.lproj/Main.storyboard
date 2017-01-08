@@ -112,10 +112,19 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="eEt-FE-eXJ">
+                                <rect key="frame" x="0.0" y="248" width="600" height="216"/>
+                                <color key="backgroundColor" red="0.091560249179999997" green="1" blue="0.965712554" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.091560249179999997" green="1" blue="0.965712554" alpha="1" colorSpace="calibratedRGB"/>
+                                <date key="date" timeIntervalSinceReferenceDate="504902448.44094598">
+                                    <!--2016-12-31 18:40:48 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" red="0.079580444456548369" green="0.65487612997782541" blue="0.74504813762525246" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="egQ-Rx-RHz" firstAttribute="centerY" secondItem="1E7-bH-vNc" secondAttribute="centerY" id="1n3-Nx-Oao"/>
+                            <constraint firstItem="eEt-FE-eXJ" firstAttribute="centerX" secondItem="rWw-zd-peB" secondAttribute="centerX" id="2B5-0X-oQo"/>
                             <constraint firstItem="v0B-Jj-0F4" firstAttribute="leading" secondItem="RoP-LS-ekW" secondAttribute="leading" constant="158" id="76q-hd-orw"/>
                             <constraint firstItem="egQ-Rx-RHz" firstAttribute="top" secondItem="0X7-dM-5EU" secondAttribute="bottom" constant="45" id="7Ak-8a-8NG"/>
                             <constraint firstItem="v0B-Jj-0F4" firstAttribute="top" secondItem="RoP-LS-ekW" secondAttribute="top" constant="157" id="PUv-4U-Ph0"/>
@@ -123,8 +132,10 @@
                             <constraint firstItem="rWw-zd-peB" firstAttribute="top" secondItem="0X7-dM-5EU" secondAttribute="bottom" constant="8" symbolic="YES" id="WUg-70-BV7"/>
                             <constraint firstItem="1E7-bH-vNc" firstAttribute="leading" secondItem="0X7-dM-5EU" secondAttribute="leading" id="cuF-vo-Hf4"/>
                             <constraint firstItem="rWw-zd-peB" firstAttribute="centerX" secondItem="RoP-LS-ekW" secondAttribute="centerX" id="gt1-iN-AQb"/>
+                            <constraint firstItem="eEt-FE-eXJ" firstAttribute="leading" secondItem="RoP-LS-ekW" secondAttribute="leading" id="l1C-Sl-Se3"/>
                             <constraint firstItem="0X7-dM-5EU" firstAttribute="leading" secondItem="RoP-LS-ekW" secondAttribute="leadingMargin" constant="75" id="n2A-mC-tgm"/>
                             <constraint firstItem="0X7-dM-5EU" firstAttribute="top" secondItem="pgm-oP-8MK" secondAttribute="bottom" constant="8" symbolic="YES" id="oyS-n4-nD2"/>
+                            <constraint firstItem="eEt-FE-eXJ" firstAttribute="top" secondItem="egQ-Rx-RHz" secondAttribute="bottom" constant="70" id="qeD-Cq-jEB"/>
                             <constraint firstItem="1E7-bH-vNc" firstAttribute="top" secondItem="0X7-dM-5EU" secondAttribute="bottom" constant="50" id="rI5-eB-On4"/>
                             <constraint firstItem="rWw-zd-peB" firstAttribute="centerX" secondItem="0X7-dM-5EU" secondAttribute="centerX" id="wGR-At-jIf"/>
                         </constraints>
@@ -132,12 +143,13 @@
                     <connections>
                         <outlet property="important" destination="egQ-Rx-RHz" id="qyp-4B-YII"/>
                         <outlet property="newTask" destination="0X7-dM-5EU" id="50W-hf-iO6"/>
+                        <outlet property="taskDate" destination="eEt-FE-eXJ" id="YSm-RJ-Hc5"/>
                         <outlet property="taskImportance" destination="1E7-bH-vNc" id="64L-zm-wK6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xk-4v-n9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1887" y="364"/>
+            <point key="canvasLocation" x="1875" y="356"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zDg-Ph-dY9">
