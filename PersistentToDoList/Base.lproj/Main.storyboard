@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d6N-fd-m9X">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d6N-fd-m9X">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="364"/>
+            <point key="canvasLocation" x="1117" y="363.99999999999994"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="plW-1u-xPi">
@@ -140,6 +140,7 @@
                             <constraint firstItem="rWw-zd-peB" firstAttribute="centerX" secondItem="0X7-dM-5EU" secondAttribute="centerX" id="wGR-At-jIf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="57L-CO-Vtn"/>
                     <connections>
                         <outlet property="important" destination="egQ-Rx-RHz" id="qyp-4B-YII"/>
                         <outlet property="newTask" destination="0X7-dM-5EU" id="50W-hf-iO6"/>
@@ -149,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xk-4v-n9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1875" y="356"/>
+            <point key="canvasLocation" x="1875" y="355.99999999999994"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zDg-Ph-dY9">
@@ -167,7 +168,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFH-P5-aiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="243" y="1024"/>
+            <point key="canvasLocation" x="243" y="1023.9999999999999"/>
         </scene>
     </scenes>
 </document>
